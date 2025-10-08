@@ -10,13 +10,14 @@ pipeline{
         }
         stages('Docker Login') {
             steps {
-                bat 'docker login -u '
+                bat 'docker login -u "talaritulasi" -p "Talari@28"'
             }
         }
         stage('push Docker Image to Docker Hub') {
             steps {
-                echo "push Docker Image to Docker Hub"
-                bat "docker tag kubdemoapp:v1 "
+                echo 'push Docker Image to Docker Hub'
+                bat 'docker tag kubdemoapp:v1 talaritulasi/sample:kubeimage1'
+                bat 'docker push talaritulasi/sample:kubeimage1'
 
                 bat "docker push "
             }
@@ -37,4 +38,5 @@ pipeline{
                 echo 'Pipeline failed. Please check the logs.'
             }
     }
+
 }
