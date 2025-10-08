@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: kuberdemoapp-Deployment
+spec :
+  replicas: 4
+  selector:
+    matchLabels:
+      app: kuberdemoapp
+  template:
+    metadata:
+      labels:
+        app: kuberdemoapp
+    spec:
+      containers: 
+        - name: kuberdemoapp
+          image: tulasi/sample:kubeimage #use your Docker Hub image
+          ports:
+            - containerPort: 5000
